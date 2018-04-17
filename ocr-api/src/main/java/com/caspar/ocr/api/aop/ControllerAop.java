@@ -27,7 +27,11 @@ public class ControllerAop {
         String methodName = invocation.getSignature().getName();
         Signature signature = invocation.getSignature();
         MethodSignature methodSignature = (MethodSignature) signature;
-        log.info("controller:" + targetName + ",参数:" + JSON.toJSONString(methodSignature.getParameterNames()) + "参数值:" + JSON.toJSONString(invocation.getArgs()) + "method:" + methodName);
+        try {
+            log.info("controller:" + targetName + ",参数:" + JSON.toJSONString(methodSignature.getParameterNames()) + "参数值:" + JSON.toJSONString(invocation.getArgs()) + "method:" + methodName);
+        } catch (Exception e) {
+
+        }
         Object object = invocation.proceed();
         long l2 = System.currentTimeMillis();
         long l = (l2 - l1);
