@@ -3,6 +3,7 @@ package com.caspar.ocr.api.service.impl;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.caspar.ocr.api.dto.ReceiptInfo;
+import com.caspar.ocr.api.service.ImageService;
 import com.caspar.ocr.api.service.OcrService;
 import com.caspar.ocr.api.service.TextProcessService;
 import com.caspar.ocr.api.word.DateFilter;
@@ -40,6 +41,9 @@ public class AliOcrServiceImpl implements OcrService {
 
     @Autowired
     private TextProcessService textProcessService;
+
+    @Autowired
+    private ImageService imageService;
 
     private Map<String, String> headers;
 
@@ -88,7 +92,27 @@ public class AliOcrServiceImpl implements OcrService {
     @Override
     public ReceiptInfo getReceiptInfoByPath(String imgPath) {
         log.info("识别图片,path={}", imgPath);
-        return this.getReceiptInfoByBase64(Image2Base64.getImgBase64Str(imgPath));
+        String defaultImgPath = imageService.getDefaultImgPath(imgPath);
+        return this.getReceiptInfoByBase64(Image2Base64.getImgBase64Str(defaultImgPath));
+    }
+
+    @Override
+    public ReceiptInfo getReceiptInfoByType(String image, int type) {
+        switch (type) {
+            case StrConst.IMAGE_PATH_TYPE:
+                return this.getReceiptInfoByPath(image);
+            case StrConst.IMAGE_BASE64_TYPE:
+                return this.getReceiptInfoByBase64(image);
+            case StrConst.IMAGE_URL_TYPE:
+                return this.getReceiptInfoByUrl(image);
+            default:
+                return this.getReceiptInfoByBase64(image);
+        }
+    }
+
+    @Override
+    public ReceiptInfo getReceiptInfoByUrl(String imageUrl) {
+        return this.getReceiptInfoByBase64(Image2Base64.getImgBase64ByUrl(imageUrl));
     }
 
     /**

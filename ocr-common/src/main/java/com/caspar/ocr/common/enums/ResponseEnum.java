@@ -27,6 +27,7 @@ public enum ResponseEnum {
 
     IMAGE_FILE_NOT_EXIST(404, "图片不存在"),
     WORD_EXIST(405, "该词汇已存在"),
+    get_image_error(406, "获取图片失败"),
 
     ;
 

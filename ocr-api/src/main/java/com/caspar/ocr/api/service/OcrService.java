@@ -27,5 +27,15 @@ public interface OcrService {
      */
     ReceiptInfo getReceiptInfoByPath(String imgPath);
 
+    /**
+     * 提取凭票信息
+     *
+     * @param image
+     * @param type
+     * @return
+     */
+    ReceiptInfo getReceiptInfoByType(String image, int type);
+
+    ReceiptInfo getReceiptInfoByUrl(String imageUrl);
 
 }

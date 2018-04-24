@@ -25,4 +25,9 @@ public final class StrConst {
      */
     public static final int ALI_OCR_MIN_SIZE = 10;
 
+    public static final int IMAGE_PATH_TYPE = 0;
+    public static final int IMAGE_BASE64_TYPE = 1;
+    public static final int IMAGE_URL_TYPE = 2;
+
+
 }
