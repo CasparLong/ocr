@@ -51,7 +51,7 @@ public class Image2Base64 {
     public static String getImgBase64ByUrl(String imgUrl) {
         byte[] data = getImgByte(imgUrl);
         if (data == null) {
-            throw new OcrException(ResponseEnum.get_image_error);
+            throw new OcrException(ResponseEnum.GET_IMAGE_ERROR);
         }
 
         return Base64.getEncoder().encodeToString(data);
