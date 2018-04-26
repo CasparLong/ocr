@@ -28,7 +28,7 @@ public interface OcrService {
     ReceiptInfo getReceiptInfoByPath(String imgPath);
 
     /**
-     * 提取凭票信息
+     * 提取凭票信息:0-目录,1-base64,2-url
      *
      * @param image
      * @param type

@@ -22,6 +22,12 @@ public class OcrController {
     @Autowired
     private OcrService ocrService;
 
+    /**
+     * 提取凭票信息:0-目录,1-base64,2-url
+     * @param image
+     * @param type
+     * @return
+     */
     @RequestMapping("/receipt")
     public Mono<Response> getReceiptInfo(@RequestParam String image,
                                          @RequestParam int type) {
