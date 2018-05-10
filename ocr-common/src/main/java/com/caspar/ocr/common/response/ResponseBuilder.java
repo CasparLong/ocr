@@ -27,6 +27,10 @@ public class ResponseBuilder {
         return build(false, ResponseEnum.FAIL.getCode(), (Object) data, ResponseEnum.FAIL.getMessage());
     }
 
+    public static Response buildFail(Object data, String msg) {
+        return build(false, ResponseEnum.FAIL.getCode(), (Object) data, msg);
+    }
+
     public static Response buildFail(String msg) {
         return build(false, ResponseEnum.FAIL.getCode(), (Object) null, msg);
     }
