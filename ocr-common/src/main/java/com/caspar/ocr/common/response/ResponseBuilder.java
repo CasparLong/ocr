@@ -39,6 +39,11 @@ public class ResponseBuilder {
         return build(true, code, (Object) null, msg);
     }
 
+    public static Response buildFail(Integer code, String msg, Object date) {
+        return build(true, code, (Object) date, msg);
+    }
+
+
     public static Response build(boolean success, Integer code) {
         return build(success, code, (Object) null, (String) null);
     }
